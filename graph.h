@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-//#include sqll.h  // for traversals
 
 using namespace std;
 
@@ -12,7 +11,6 @@ struct edge
 {
     struct vertex* dest;
     edge* eNext;
-
     int weight;
 };
 
@@ -26,9 +24,9 @@ struct vertex
 class Graph
 {
     private:
-        vertex* vertices; // list of vertices
-        int** adjMatrix;
-        bool* visited;
+        vertex* vertices;      // linked list of vertices
+        int** adjMatrix;       // adjacency matrix
+        bool* visited;         // visited array for traversals
         int maxVertices;
         int numVertices;
 
@@ -36,22 +34,24 @@ class Graph
         Graph(int maxV);
         ~Graph();
 
-        //core operations
+        // Core operations
         void addVertex(char data);
         void addEdge(char src, char dest, int weight);
         void removeVertex(char data);
         void removeEdge(char src, char dest);
 
-        // traversal algorithms
+        // Traversal algorithms
         void bfsL(char start);
         void bfsM(char start);
         void dfsL(char start);
         void dfsM(char start);
 
-        // display
+        // Task 4
+        bool detectCycle();
+
+        // Display
         void displayList();
         void displayMatrix();
-
 };
 
 #endif

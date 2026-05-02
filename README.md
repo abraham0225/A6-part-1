@@ -15,3 +15,9 @@ Task 3: Implement dfsL() and dfsM() function. [Use stack implementation from
 prior assignments] 
 
 Task 4: Implement detectCycle() OR connectedComponents() function.
+
+Files included:
+graph.h
+graph.cpp
+mainGraph.cpp
+README.txt
