@@ -1,57 +1,57 @@
-#ifndef GRAPH_H
-#define GRAPH_H
-
-#include <iostream>
-#include <string>
-#include <iomanip>
-//#include sqll.h  // for traversals
-
-using namespace std;
-
-struct edge
+#include "graph.h"
+ 
+int main()
 {
-    struct vertex* dest;
-    edge* eNext;
+    Graph g(10); 
+    
+    // Adding vertices
+    g.addVertex('A');
+    g.addVertex('B');
+    g.addVertex('C');
+    g.addVertex('D');
+    g.addVertex('E');
+    g.addVertex('F');  
+    g.addVertex('G');
+    g.addVertex('H');
+    g.addVertex('I');
+    g.addVertex('J');
 
-    int weight;
-};
+    // Adding edges
+    g.addEdge('A', 'B', 1);
+    g.addEdge('A', 'C', 2);
+    g.addEdge('B', 'D', 3);
+    g.addEdge('C', 'E', 4);
+    g.addEdge('C', 'D', 5);
+    g.addEdge('E', 'D', 6);
+    g.addEdge('A', 'H', 7);
+    g.addEdge('B', 'G', 8);
+    g.addEdge('F', 'I', 9);
+    g.addEdge('F', 'J', 10);
+    g.addEdge('I', 'J', 11);
+    g.addEdge('C', 'F', 12); 
+    g.addEdge('D', 'F', 13);
+    g.addEdge('C', 'H', 14);
 
-struct vertex
-{
-    char data;
-    vertex* vNext;
-    edge* aHead;
-};
+    // Removing a vertex and some edges
+    //g.removeVertex('F');
+    // g.removeEdge('C', 'H');
+    // g.removeEdge('D', 'E');
 
-class Graph
-{
-    private:
-        vertex* vertices; // list of vertices
-        int** adjMatrix;
-        bool* visited;
-        int maxVertices;
-        int numVertices;
+    // Display adjacency list and matrix
+    g.displayList();
+    g.displayMatrix();
+    
+    cout << endl;
 
-    public:
-        Graph(int maxV);
-        ~Graph();
+    // Perform BFS and DFS starting from vertex 'A'
+    // g.bfsL('A');
+    // g.bfsM('A');
+    // g.dfsL('A');
+    // g.dfsM('A');  
 
-        //core operations
-        void addVertex(char data);
-        void addEdge(char src, char dest, int weight);
-        void removeVertex(char data);
-        void removeEdge(char src, char dest);
 
-        // traversal algorithms
-        void bfsL(char start);
-        void bfsM(char start);
-        void dfsL(char start);
-        void dfsM(char start);
+    cout << endl;
 
-        // display
-        void displayList();
-        void displayMatrix();
 
-};
-
-#endif
+    return 0;
+}
